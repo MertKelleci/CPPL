@@ -24,7 +24,7 @@ struct Vector2
     bool operator!=(const Vector2 &other) const { return !(*this == other); }
 };
 
-// Overloading << operator to be able to write Vector2 construct.
+// Overloading << operator to be able to write Vector2 struct.
 std::ostream &operator<<(std::ostream &stream, const Vector2 &vect)
 {
     stream << "(" << vect.x << ", " << vect.y << ")";
