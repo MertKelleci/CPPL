@@ -1,0 +1,2 @@
+﻿main.obj : error LNK2001: unresolved external symbol glfwInit
+C:\Users\mrtke\Desktop\CPP\CPPL\DynamicLinking\bin\x64\Release\DynamicLinking.exe : fatal error LNK1120: 1 unresolved externals

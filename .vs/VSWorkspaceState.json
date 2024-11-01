@@ -1,12 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\UsingLibrariesAndStaticLinking",
-    "\\UsingLibrariesAndStaticLinking\\Dependencies",
-    "\\UsingLibrariesAndStaticLinking\\Dependencies\\GLFW",
-    "\\UsingLibrariesAndStaticLinking\\Dependencies\\GLFW\\lib-vc2022",
-    "\\UsingLibrariesAndStaticLinking\\UsingLibrariesAndStaticLinking"
+    "\\DynamicLinking",
+    "\\DynamicLinking\\bin",
+    "\\DynamicLinking\\bin\\x64",
+    "\\DynamicLinking\\DynamicLinking"
   ],
-  "SelectedNode": "\\UsingLibrariesAndStaticLinking\\UsingLibrariesAndStaticLinking\\main.cpp",
+  "SelectedNode": "\\DynamicLinking\\DynamicLinking\\main.cpp",
   "PreviewInSolutionExplorer": false
 }
