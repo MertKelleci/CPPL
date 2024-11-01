@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\UsingLibrariesAndStaticLinking",
+    "\\UsingLibrariesAndStaticLinking\\Dependencies",
+    "\\UsingLibrariesAndStaticLinking\\Dependencies\\GLFW",
+    "\\UsingLibrariesAndStaticLinking\\Dependencies\\GLFW\\lib-vc2022",
+    "\\UsingLibrariesAndStaticLinking\\UsingLibrariesAndStaticLinking"
+  ],
+  "SelectedNode": "\\UsingLibrariesAndStaticLinking\\UsingLibrariesAndStaticLinking\\main.cpp",
+  "PreviewInSolutionExplorer": false
+}
