@@ -2,7 +2,7 @@
 
 int main()
 {
-    // Bu stack'te oluşturulduğu için lifetime'ı farklı. End bracket'de silinir.
+    // This array's lifetime ends when we hit the endbracket since it's created in stack.
     int example[5];
     for (int i = 0; i < 5; i++)
         example[i] = 5 - i;
@@ -19,7 +19,7 @@ int main()
     }
     std::cout << std::endl;
 
-    // Bu heap'te oluşuturulur. End bracket'de silinmez, manuel olarak silinmeli;
+    // This array is created on heap so it must be deleted manually.
     int *another = new int[5];
     delete[] another;
     std::cin.get();
