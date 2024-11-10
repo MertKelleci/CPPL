@@ -21,7 +21,6 @@ public:
     String(String &&string)
     {
         printf("Moved\n");
-        m_Data = new char[m_Size];
         m_Size = string.m_Size;
         // Instead of copying, we get the pointer of the original data.
         m_Data = string.m_Data;
@@ -29,6 +28,26 @@ public:
         // The reason for this is when the previous String instance is deleted, we don't lose the 'm_Data'.
         string.m_Size = 0;
         string.m_Data = nullptr;
+    }
+
+    String &operator=(String &&string)
+    {
+        printf("Moved\n");
+
+        // This if statement checks if the String instance isn't being assigned to itself.
+        if (this != &string)
+        {
+            delete[] m_Data;
+            m_Size = string.m_Size;
+            // Instead of copying, we get the pointer of the original data.
+            m_Data = string.m_Data;
+
+            // The reason for this is when the previous String instance is deleted, we don't lose the 'm_Data'.
+            string.m_Size = 0;
+            string.m_Data = nullptr;
+        }
+
+        return *this;
     }
     ~String()
     {
@@ -60,7 +79,7 @@ public:
     }
     // This constructor changed from taking a reference to taking a rvalue reference, in order to move the string instead of copying it.
     // You have to explicitly cast it as a rvalue reference for this to call correct String constructor.
-    Entity(String &&name) : m_Name((String &&)name)
+    Entity(String &&name) : m_Name(std::move(name))
     {
     }
 
@@ -75,5 +94,20 @@ int main()
     // The string gets created on main function, and get coppied when creating the Entity instance.
     Entity entity("Peter");
     entity.PrintName();
+
+    String string = "Hello";
+    String apple = "Apple";
+    String dest;
+    std::cout << "Apple: ";
+    apple.Print();
+    std::cout << "Dest: ";
+    dest.Print();
+    dest = std::move(apple);
+    std::cout << "Apple: ";
+    apple.Print();
+    std::cout << "Dest: ";
+    dest.Print();
+    // Same thing as '((String&&)string)'.
+    // String dest = std::move(string);
     std::cin.get();
 }
