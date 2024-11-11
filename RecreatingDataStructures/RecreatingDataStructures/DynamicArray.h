@@ -26,6 +26,17 @@ public:
 		return m_Data[index];
 	}
 
+	template<typename... Args>
+	T& EmplaceBack(Args&&... args)
+	{
+		if (m_Size >= m_Capacity)
+			ReAlloc(m_Capacity + m_Capacity / 2);
+
+		m_Data[m_Size] = T(std::forward<Args>(args)...);
+		return m_Data[m_Size++];
+	}
+	~Vector() { delete[] m_Data; }
+
 private:
 	void ReAlloc(size_t newCapacity)
 	{
@@ -35,7 +46,7 @@ private:
 			m_Size = newCapacity;
 
 		for (size_t i = 0; i < m_Size; i++)
-			newBlock[i] = m_Data[i];
+			newBlock[i] = std::move(m_Data[i]);
 
 		delete[] m_Data;
 		m_Data = newBlock;
