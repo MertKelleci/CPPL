@@ -32,11 +32,29 @@ public:
 		if (m_Size >= m_Capacity)
 			ReAlloc(m_Capacity + m_Capacity / 2);
 
-		m_Data[m_Size] = T(std::forward<Args>(args)...);
+		// This for creating the object on stack in this method and then move it to the array.
+		// m_Data[m_Size] = T(std::forward<Args>(args)...);
+		// The following code helps us directly create the object where we need it to be.
+		new(&m_Data[m_Size]) T(std::forward<Args>(args)...);
 		return m_Data[m_Size++];
 	}
 	~Vector() { delete[] m_Data; }
+	void PopBack()
+	{
+		if (m_Size > 0)
+		{
+			m_Size--;
+			m_Data[m_Size].~T();
+		}
+	}
 
+	void Clear()
+	{
+		for (size_t i = 0; i < m_Size; i++)
+			m_Data[i].~T();
+
+		m_Size = 0;
+	}
 private:
 	void ReAlloc(size_t newCapacity)
 	{

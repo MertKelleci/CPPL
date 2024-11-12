@@ -1,11 +1,2 @@
 ﻿  main.cpp
-C:\Users\mrtke\Desktop\CPP\CPPL\RecreatingDataStructures\RecreatingDataStructures\DynamicArray.h(43,18): error C3861: 'm_data': identifier not found
-  (compiling source file 'main.cpp')
-      C:\Users\mrtke\Desktop\CPP\CPPL\RecreatingDataStructures\RecreatingDataStructures\DynamicArray.h(43,18):
-      the template instantiation context (the oldest one first) is
-          C:\Users\mrtke\Desktop\CPP\CPPL\RecreatingDataStructures\RecreatingDataStructures\DynamicArray.h(5,7):
-          while compiling class template 'Vector'
-  
-C:\Users\mrtke\Desktop\CPP\CPPL\RecreatingDataStructures\RecreatingDataStructures\DynamicArray.h(43,18): error C2065: 'm_data': undeclared identifier
-  (compiling source file 'main.cpp')
-  
+  RecreatingDataStructures.vcxproj -> C:\Users\mrtke\Desktop\CPP\CPPL\RecreatingDataStructures\x64\Debug\RecreatingDataStructures.exe

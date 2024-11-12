@@ -10,18 +10,34 @@ struct Vector3
 	Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
 	Vector3(const Vector3& other) : x(other.x), y(other.y), z(other.z)
 	{
-		std::cout << "Vector Copied!\n";
+		std::cout << "Vector3 Copied!\n";
 	}
-	Vector3(Vector3&& other)
+	Vector3(Vector3&& other) noexcept
 	{
 		x = std::move(other.x);
 		y = std::move(other.y);
 		z = std::move(other.z);
-		std::cout << "Vector Moved!\n";
+		std::cout << "Vector3 Moved!\n";
 	}
 	~Vector3()
 	{
-		std::cout << "Vector Destroyed\n";
+		std::cout << "Vector3 Destroyed\n";
+	}
+	Vector3& operator=(const Vector3& other)
+	{
+		std::cout << "Vector3 Copied\n";
+		x = other.x;
+		y = other.y;
+		z = other.z;
+		return *this;
+	}
+	Vector3& operator=(const Vector3&& other) noexcept
+	{
+		std::cout << "Vector3 Moved\n";
+		x = other.x;
+		y = other.y;
+		z = other.z;
+		return *this;
 	}
 };
 
@@ -58,5 +74,6 @@ int main()
 	ArrayDemonstration();
 	std::cout << "===================================\n";
 	std::cout << "Vector or Dynamic Array Demonstrations:\n";
+	VectorDemonstration();
 
 }
