@@ -62,17 +62,42 @@ void ArrayDemonstration()
 
 void VectorDemonstration()
 {
-	Vector<Vector3> vector;
+	/*Vector<Vector3> vector;
 	vector.PushBack(Vector3(1.0f));
 	vector.PushBack(Vector3(2, 3, 4));
-	vector.PushBack(Vector3());
+	vector.PushBack(Vector3());*/
+
+	Vector<int> values;
+
+	values.EmplaceBack(1);
+	values.EmplaceBack(3);
+	values.EmplaceBack(5);
+	values.EmplaceBack(2);
+	values.EmplaceBack(9);
+
+	std::cout << "Not using iterator:\n";
+	for (int i = 0; i < values.Size(); i++)
+		std::cout << values[i] << " ";
+	std::cout << std::endl;
+
+
+	std::cout << "Range based for loop:\n";
+	for (int value : values)
+		std::cout << value << " ";
+	std::cout << std::endl;
+
+	std::cout << "Iterator:\n";
+	for (Vector<int>::Iterator it = values.begin(); it != values.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
 }
 
 int main()
 {
-	std::cout << "Array Demonstrations:";
+	/*std::cout << "Array Demonstrations:";
 	ArrayDemonstration();
-	std::cout << "===================================\n";
+	std::cout << "===================================\n";*/
 	std::cout << "Vector or Dynamic Array Demonstrations:\n";
 	VectorDemonstration();
 
