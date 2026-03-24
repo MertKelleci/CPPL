@@ -23,14 +23,14 @@ private:
 
 public:
     Player(const String &name) : m_Name(name) {}
-    // String GetName() override { return m_Name; }
+     //String GetName() override { return m_Name; }
     String GetClassName() override { return m_Name; }
 };
 
-// void PrintName(Entity *entity)
-// {
-//     std::cout << entity->GetName() << std::endl;
-// }
+ //void PrintName(Entity *entity)
+ //{
+ //    std::cout << entity->GetName() << std::endl;
+ //}
 
 void Print(Printable *obj)
 {
