@@ -1,36 +1,36 @@
-// #define String std::string
+ #define string std::string
 
-// #include <iostream>
-// #include <string>
+ #include <iostream>
+ #include <string>
 
-// class Entity
-// {
-// public:
-//     virtual String GetName() { return "Entity"; }
-// };
+ class entity
+ {
+ public:
+     virtual string getname() { return "entity"; }
+ };
 
-// class Player : public Entity
-// {
-// private:
-//     String m_Name;
+ class player : public entity
+ {
+ private:
+     string m_name;
 
-// public:
-//     Player(const String &name) : m_Name(name) {}
-//     String GetName() override { return m_Name; }
-// };
+ public:
+     player(const string &name) : m_name(name) {}
+     string getname() override { return m_name; }
+ };
 
-// void PrintName(Entity *entity)
-// {
-//     std::cout << entity->GetName() << std::endl;
-// }
+ void printname(entity *entity)
+ {
+     std::cout << entity->getname() << std::endl;
+ }
 
-// int main()
-// {
-//     Entity *e = new Entity();
-//     PrintName(e);
+ int main()
+ {
+     entity *e = new entity();
+     printname(e);
 
-//     Player *p = new Player("Merdo");
-//     PrintName(p);
+     player *p = new player("merdo");
+     printname(p);
 
-//     std::cin.get();
-// }
+     std::cin.get();
+ }
