@@ -39,6 +39,7 @@ public:
 
     // This is the correct way to intitialize
     // Entity(): m_Name("Unknown"), m_Example(Example(8)){};
+    // This works as well.
     // Entity(): m_Name("Unknown"), m_Example(8){};
 
     const std::string &GetName() const { return m_Name; }
