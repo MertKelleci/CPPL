@@ -13,14 +13,14 @@ int *CreateArray()
     // Once this function is done, the array, which is created in the stack, will be deleted.
     // int array[50];
 
-    int *array = new int[50];
+    int* array = new int[50];
     return array;
 }
 
 class ScopedPtr
 {
 private:
-    Entity *m_Ptr;
+    Entity* m_Ptr;
 
 public:
     ScopedPtr(Entity *ptr) : m_Ptr(ptr) {}
@@ -32,7 +32,7 @@ int main()
     {
         Entity e;
 
-        // This creates a scoped pointer.
+		// This creates a scoped pointer. While the 'Entity' is created in the heap, it will be automatically deleted when the 'ScopedPtr' goes out of scope since the destructor for 'ScopedPtr' deletes the given Entity object.
         ScopedPtr e_scp = new Entity();
     }
 
