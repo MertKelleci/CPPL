@@ -29,17 +29,17 @@ int main()
 {
     std::vector<Vertex> vertices;
 
-    // The reason why we are getting a bunch of copy messages is because the Vertex objects are created in the current stack frame.
-    // In this case it's main function. Then the created Vertex objects are sent to actual vector.
-    // vertices.push_back({1, 2, 3});
-    // vertices.push_back({4, 5, 6});
-    // vertices.push_back({7, 8, 9});
+    // If we run the following lines of code, we are going to get a bunch of "Vertex Copied!" texts printing to the console. And that's because the Vertex objects are created in the current stack frame, in this case it's the main function. Then the created Vertex objects are sent to actual vector.
+	// And another reason is, depending on your compiler, the vector may need to resize itself when you add more elements to it. When the vector resizes itself, it needs to copy all the existing elements to the new memory location. So if you have a lot of elements in the vector, this can lead to a lot of copying and can be inefficient.
+    // vertices.push_back(Vertex(1,2,3));
+    // vertices.push_back(Vertex(4,5,6));
+    // vertices.push_back(Vertex(7,8,9));
 
     // emplace_back function makes it so that the Vertex objects are created inplace in Vector.
     vertices.reserve(3);
-    vertices.emplace_back(1, 2, 3);
-    vertices.emplace_back(3, 4, 5);
-    vertices.emplace_back(6, 7, 8);
+    vertices.emplace_back({ 1, 2, 3 });
+    vertices.emplace_back({ 3, 4, 5 });
+    vertices.emplace_back({ 6, 7, 8 });
 
     for (int i = 0; i < vertices.size(); i++)
         std::cout << vertices[i] << std::endl;

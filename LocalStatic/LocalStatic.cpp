@@ -24,6 +24,7 @@ public:
 
 void Function()
 {
+	// Withouth the static keyword, everytime you call the function you would get a new variable i, which would be initialized to 0. With the static keyword, the variable is only initialized once and retains its value between function calls.
     static int i = 0;
     i++;
     std::cout << i << std::endl;
