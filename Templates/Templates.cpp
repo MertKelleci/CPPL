@@ -33,9 +33,10 @@ int main()
 
     // This one won't work.
     // std::string c = add("Hello ", "World");
-    // While this one does. Because if you call the function without angle brackets, any ambiguous or non-deducible types will create problems.
-    // In this example, two parameters we send can either be 'std::string', which support '+' operation, or char pointer, which doesn't support '+' operation.
+    
+    // While this one does. 
     std::string c = add<std::string>("Hello ", "World");
+    // Because if you call the function without angle brackets, any ambiguous or non-deducible types will create problems. In this example, two parameters we send can either be 'std::string', which support '+' operation, or char pointer, which doesn't support '+' operation.
 
     std::cout << c << std::endl;
 
