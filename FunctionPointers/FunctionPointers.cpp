@@ -35,6 +35,7 @@ int main()
 	std::vector<int> values = { 1, 2, 3, 4, 5 };
 
 	// The second parameter of ForEach is a function pointer that takes an int and returns void. In this case, we are passing a lambda function that takes an int value and prints it to the console. The ForEach function will call this lambda for each element in the values vector, allowing us to print each value. The square brackets used here are part of the syntax to create a lambda function.
+	// If you want to pass a variable to the lambda function, you can not use raw function pointers. You would have to use std::function from the 'functional' library, which can store any callable target, including lambda expressions that capture variables. In this case, you would define ForEach to take a std::function<void(int)> instead of a raw function pointer, and then you could pass a lambda that captures variables as needed.
 	ForEach(values, [](int value)
 		{
 			std::cout << "Value: " << value << std::endl;

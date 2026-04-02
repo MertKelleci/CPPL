@@ -1,3 +1,4 @@
+// This library includes the std::function, which is a general-purpose polymorphic function wrapper. It can store, copy, and invoke any callable target—functions, lambda expressions, bind expressions, or other function objects—given a matching function signature. In this code, std::function<void(int)> is used to define a type that can hold any callable that takes an int as an argument and returns void.
 #include <functional>
 #include <iostream>
 #include <vector>
@@ -21,7 +22,7 @@ int main()
 	std::cout << *iterator << std::endl;
 
 	// You can pass variables by putting them inside the '[]'. '=' passes all by value, '&' passes all by reference.
-	// But if you want to pass something and then pass that lambda's pointer, you cannot use raw function pointer 'void (*func)(int)'.
+	// But if you want to pass something to the lambda function (in this case the variable 'a'), and then pass that lambda's pointer, you cannot use raw function pointer 'void (*func)(int)'.
 	// The std::function comes from the 'functional' library.
 	// If you want to reassign a, you have to declare lambda as mutable. '[captures](params) mutable{body}'
 
