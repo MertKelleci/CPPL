@@ -1,0 +1,2 @@
+// This source file is needed for precompiled headers. The compiler will compile this file and create a precompiled header file (pch.pch) that can be used by other source files in the project to speed up compilation times. The pch.h header file should include all the commonly used headers and definitions that are needed across multiple source files in the project.
+#include "pch.h"

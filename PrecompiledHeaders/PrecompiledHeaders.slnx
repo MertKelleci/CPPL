@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="PrecompiledHeaders.vcxproj" Id="37a3226e-4d15-4782-86af-249d90236f73" />
+</Solution>
