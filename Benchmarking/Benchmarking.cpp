@@ -1,64 +1,66 @@
+#include <array>
+#include <chrono>
 #include <iostream>
 #include <memory>
-#include <chrono>
-#include <array>
 
 class Timer
 {
 public:
-    Timer()
-    {
-        m_StartTimepoint = std::chrono::high_resolution_clock::now();
-    }
+	Timer()
+	{
+		m_StartTimepoint = std::chrono::high_resolution_clock::now();
+	}
 
-    ~Timer() { Stop(); }
+	~Timer() { Stop(); }
 
 private:
-    std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
+	std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
 
-    void Stop()
-    {
-        auto endTimepoint = std::chrono::high_resolution_clock::now();
-        auto start = std::chrono::time_point_cast<std::chrono::microseconds>(m_StartTimepoint).time_since_epoch().count();
-        auto end = std::chrono::time_point_cast<std::chrono::microseconds>(endTimepoint).time_since_epoch().count();
+	void Stop()
+	{
+		auto endTimepoint = std::chrono::high_resolution_clock::now();
 
-        auto duration = end - start;
-        double ms = duration * 0.001;
+		// What time_since_epoch() does is it returns the number of ticks that have passed since the epoch (January 1, 1970).
+		auto start = std::chrono::time_point_cast<std::chrono::microseconds>(m_StartTimepoint).time_since_epoch().count();
+		auto end = std::chrono::time_point_cast<std::chrono::microseconds>(endTimepoint).time_since_epoch().count();
 
-        std::cout << duration << "us (" << ms << " ms) \n";
-    }
+		auto duration = end - start;
+		double ms = duration * 0.001;
+
+		std::cout << duration << " us (" << ms << " ms) \n";
+	}
 };
 
 int main()
 {
-    struct Vector2
-    {
-        float x, y;
-    };
+	struct Vector2
+	{
+		float x, y;
+	};
 
-    std::cout << "Make Shared\n";
-    {
-        std::array<std::shared_ptr<Vector2>, 1000> sharedPtrs;
-        Timer timer;
-        for (int i = 0; i < sharedPtrs.size(); i++)
-            sharedPtrs[i] = std::make_shared<Vector2>();
-    }
+	std::cout << "Make Shared\n";
+	{
+		std::array<std::shared_ptr<Vector2>, 1000> sharedPtrs;
+		Timer timer;
+		for (int i = 0; i < sharedPtrs.size(); i++)
+			sharedPtrs[i] = std::make_shared<Vector2>();
+	}
 
-    std::cout << "New Shared\n";
-    {
-        std::array<std::shared_ptr<Vector2>, 1000> sharedPtrs;
-        Timer timer;
-        for (int i = 0; i < sharedPtrs.size(); i++)
-            sharedPtrs[i] = std::shared_ptr<Vector2>(new Vector2());
-    }
+	std::cout << "New Shared\n";
+	{
+		std::array<std::shared_ptr<Vector2>, 1000> sharedPtrs;
+		Timer timer;
+		for (int i = 0; i < sharedPtrs.size(); i++)
+			sharedPtrs[i] = std::shared_ptr<Vector2>(new Vector2());
+	}
 
-    std::cout << "Make Unique\n";
-    {
-        std::array<std::unique_ptr<Vector2>, 1000> sharedPtrs;
-        Timer timer;
-        for (int i = 0; i < sharedPtrs.size(); i++)
-            sharedPtrs[i] = std::make_unique<Vector2>();
-    }
+	std::cout << "Make Unique\n";
+	{
+		std::array<std::unique_ptr<Vector2>, 1000> sharedPtrs;
+		Timer timer;
+		for (int i = 0; i < sharedPtrs.size(); i++)
+			sharedPtrs[i] = std::make_unique<Vector2>();
+	}
 
-    std::cin.get();
+	std::cin.get();
 }
