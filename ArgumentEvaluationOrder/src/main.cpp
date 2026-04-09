@@ -9,7 +9,7 @@ int main()
 {
 	int x = 0;
 
-	// The order of evaluation of function arguments is unspecified in C++, so this is undefined behaviour. You'll get different results on different compilers or even different runs of the same program. In general, you should avoid writing code that relies on the order of evaluation of function arguments, as it can lead to unpredictable behavior.
+	// The order of evaluation of function arguments is unspecified in C++, so this is undefined behaviour. You'll get different results on different compilers or even different runs of the same program. In general, you should avoid writing code that relies on the order of evaluation of function arguments, as it can lead to unpredictable behavior. But since C++17, C++ standard added a new rule that postfix-expressions have to evaluated before each other expressions.
 
 	// When you run this program on debug mode, you get the following printed to the console: 1 + 0 = 1
 	// When you run this program on release mode, you get the following printed to the console: 1 + 0 = 1
