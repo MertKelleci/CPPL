@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <vector>
 
-int main()
+int IteratorMain()
 {
 	std::vector<int> values = { 1, 2, 3, 4, 5 };
 
@@ -45,5 +45,6 @@ int main()
 	}
 
 	std::cin.get();
+	return 0;
 }
 
