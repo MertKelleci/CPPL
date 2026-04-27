@@ -27,6 +27,8 @@ std::ostream& operator<<(std::ostream& stream, const CityRecord& record)
 	return stream;
 }
 
+
+// This is a template specialization for the std::hash function for our CityRecord struct. It helps us create the hash function specifically for our CityRecord struct, which is necessary if we want to use it as a key in an unordered map
 namespace std
 {
 	template <>
@@ -34,6 +36,7 @@ namespace std
 	{
 		size_t operator()(const CityRecord& key) const
 		{
+			// Since they are unique to every possible city, we could use the latitude and longitude as well, but for simplicity's sake, we will just use the name of the city as the key for our hash function. std::string already has a hash function defined for it, so we can just use that. We do that by initializing a hash function(that's the first set of paranthesis) for std::string(we also need to send this as template) and then calling it with the name of the city as the argument. This will return a size_t value that represents the hash of the city name, which we can then use as the hash value for our CityRecord.
 			return hash<std::string>()(key.Name);
 		}
 	};
@@ -52,7 +55,7 @@ int main()
 
 	// If the CityRecord 'Berlin' didn't exist, the '[]' operator would create one and return it.
 	// If the map was const, then this code wouldn't work because there is no const version of this operator.
-	// If you want to retrieve data from a map you use: 'map.at(key)'. But this function breaks code if you don't have the thing you are looking for inside your map.
+	// If you want to retrieve data from a const map you use: 'map.at(key)'. But this function breaks code if you don't have the thing you are looking for inside your map.
 	// If you want to make sure first if the data you are looking for is there, you can wrap it with an if block with 'map.find(key) != map.end()' as the condition.
 	CityRecord& berlin = cityMap["Berlin"];
 	std::cout << berlin << std::endl;
@@ -66,6 +69,7 @@ int main()
 	std::cout << "--------------------\n";
 	std::cout << istanbul << std::endl;
 
+	// Since the CityRecord is a custom struct we've created, we need to define a hash function for it if we want to use it as a key in an unordered map. This is because the unordered map needs to be able to hash the keys in order to store them efficiently.
 	std::unordered_map<CityRecord, uint32_t> foundedMap;
 
 	foundedMap[berlin] = 1850;
